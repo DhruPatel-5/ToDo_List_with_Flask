@@ -1,0 +1,123 @@
+/* static/style.css */
+
+/* Pastel Rainy-Day Theme */
+
+body {
+    background: linear-gradient(to right, #fceff9, #e0f7fa); /* pink + blue pastel */
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #6c5ce7;
+    font-weight: bold;
+}
+
+/* Form Labels */
+.form-label {
+    color: #2d3436;
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-success {
+    background-color: #ffd6e0; /* pastel pink */
+    border-color: #ffd6e0;
+    color: #2d3436;
+}
+
+.btn-success:hover {
+    background-color: #ffb5c2;
+    border-color: #ffb5c2;
+}
+
+.btn-primary {
+    background-color: #a0c4ff; /* baby blue */
+    border-color: #a0c4ff;
+    color: #2d3436;
+}
+
+.btn-primary:hover {
+    background-color: #90b4f0;
+    border-color: #90b4f0;
+}
+
+.btn-danger {
+    background-color: #ffeaa7; /* soft yellow */
+    border-color: #ffeaa7;
+    color: #2d3436;
+}
+
+.btn-danger:hover {
+    background-color: #ffd45d;
+    border-color: #ffd45d;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Task List Items */
+.list-group-item {
+    background-color: #ffffffdd;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.1s ease-in-out;
+}
+
+.list-group-item:hover {
+    transform: scale(1.01);
+}
+
+/* Task Title */
+.list-group-item strong {
+    color: #00b894;
+}
+
+/* Rainy cloud pattern */
+body::after {
+    content: "";
+    background-image: url("https://i.pinimg.com/736x/e2/80/71/e280711b98500e1f259c2af0beeb0edb.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 4px;
+}
+.status-todo {
+    background: #ffd6a0; /* pastel orange */
+    color: #444;
+}
+.status-inprogress {
+    background: #4f6dff; /* pastel dark blue */
+    color: #fff;
+}
+.status-complete {
+    background: #a8ffb0; /* pastel green */
+    color: #444;
+}
+

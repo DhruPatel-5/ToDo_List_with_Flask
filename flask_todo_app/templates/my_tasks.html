@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}My Tasks - To-Do App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">My Tasks</h3>
+            <a href="{{ url_for('add_task') }}" class="btn btn-primary">Add Task</a>
+        </div>
+        {% if tasks %}
+            <ul class="list-group mb-4">
+                {% for task in tasks %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>{{ task.title }}</strong><br>
+                            <small>Start: {{ task.start_date }}</small><br>
+                            <small>Due: {{ task.due_date }}</small>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <form method="POST" action="{{ url_for('update_status', task_id=task.id) }}" style="margin-right: 8px;">
+                                <button type="submit" class="status-badge btn btn-link p-0 m-0 border-0 text-decoration-none 
+                                    {% if task.status == 'todo' %}status-todo
+                                    {% elif task.status == 'inprogress' %}status-inprogress
+                                    {% elif task.status == 'complete' %}status-complete
+                                    {% endif %}">
+                                    {% if task.status == 'todo' %}Todo{% elif task.status == 'inprogress' %}InProgress{% elif task.status == 'complete' %}Complete{% endif %}
+                                </button>
+                            </form>
+                            <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">No tasks found.</p>
+        {% endif %}
+        {% if tasks_done %}
+            <h4 class="mt-4 mb-3">Tasks Done</h4>
+            <ul class="list-group">
+                {% for task in tasks_done %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>{{ task.title }}</strong><br>
+                            <small>Start: {{ task.start_date }}</small><br>
+                            <small>Due: {{ task.due_date }}</small>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <form method="POST" action="{{ url_for('update_status', task_id=task.id) }}" style="margin-right: 8px;">
+                                <button type="submit" class="status-badge btn btn-link p-0 m-0 border-0 text-decoration-none status-complete">
+                                    Complete
+                                </button>
+                            </form>
+                            <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 
